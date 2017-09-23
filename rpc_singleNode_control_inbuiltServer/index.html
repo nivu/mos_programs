@@ -1,0 +1,40 @@
+<html>
+    <head>
+
+            <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    </head>
+<body>
+
+<button onclick="switc(16,1)">R1 On</button>
+<button onclick="switc(16,0)">R1 OFF</button> <br> <br>
+
+<button onclick="switc(5,1)">R2 On</button>
+<button onclick="switc(5,0)">R2 OFF</button> <br><br>
+
+<button onclick="switc(4,1)">R3 On</button>
+<button onclick="switc(4,0)">R3 OFF</button> <br><br>
+
+<button onclick="switc(12,1)">R4 On</button>
+<button onclick="switc(12,0)">R4 OFF</button> <br><br>
+
+<button onclick="switc(13,1)">R5 On</button>
+<button onclick="switc(13,0)">R5 OFF</button> <br><br>
+
+<button onclick="switc(15,1)">R6 On</button>
+<button onclick="switc(15,0)">R6 OFF</button> <br><br>
+
+<script>
+function switc(pin,val){
+$.post("http://192.168.1.4/rpc/control?pin=2&val=1",JSON.stringify({"pin":pin, "val": val}),
+    function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+}
+
+</script>
+
+</body>
+</html>
