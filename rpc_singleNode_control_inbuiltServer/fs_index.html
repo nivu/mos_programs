@@ -1,9 +1,9 @@
 <html>
 <body>
 
-<button onclick="switc(16,1)">R1 On</button>
-<button onclick="switc(16,0)">R1 OFF</button> <br> <br>
-
+<button onclick="switc(16,'SB1')">R1 On</button>
+<button onclick="switc(16,'SC2')">R1 OFF</button> <br> <br>
+<!--
 <button onclick="switc(5,1)">R2 On</button>
 <button onclick="switc(5,0)">R2 OFF</button> <br><br>
 
@@ -18,12 +18,12 @@
 
 <button onclick="switc(15,1)">R6 On</button>
 <button onclick="switc(15,0)">R6 OFF</button> <br><br>
-
+-->
 <script>
 function switc(pin,val){
 
 var http = new XMLHttpRequest();
-var url = "http://192.168.1.4/rpc/control";
+var url = "http://192.168.1.13/rpc/control";
 var params = JSON.stringify({"pin":pin, "val": val});
 
 http.open("POST", url, true);

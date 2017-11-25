@@ -1,9 +1,11 @@
 load('api_gpio.js');
 load('api_timer.js');
 
-let D0 = 16; //R
-let D1 = 5; //G
-let D2 = 4; //B
+let D0 = 16;
+let D1 = 5;
+let D2 = 4;
+let D3 = 0;
+let D4 = 2;
 
 GPIO.set_mode(D0, GPIO.MODE_OUTPUT);
 GPIO.set_mode(D1, GPIO.MODE_OUTPUT);
