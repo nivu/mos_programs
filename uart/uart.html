@@ -1,0 +1,25 @@
+<html>
+<body>
+
+<button onclick="switc(16,'SB1')">R1 On</button>
+<button onclick="switc(16,'SC2')">R1 OFF</button> <br> <br>
+
+<script>
+function switc(pin,val){
+
+var http = new XMLHttpRequest();
+var url = "http://192.168.1.11/rpc/control";
+var params = JSON.stringify({"pin":pin, "val": val});
+http.onreadystatechange = function() {
+      console.log(http.response); //Outputs a DOMString by default
+    
+  }
+http.open("POST", url, true);
+http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+http.send(params);
+}
+</script>
+
+</body>
+</html>

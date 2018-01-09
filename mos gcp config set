@@ -1,0 +1,9 @@
+mos config-set mqtt.enable=true mqtt.server=mqtt.googleapis.com:8883 mqtt.ssl_ca_cert=ca.pem sntp.enable=true gcp.enable=true gcp.project=smart-ups--187713 gcp.region=asia-east1 gcp.registry=ssups gcp.device=esp_dev_node device.id=esp_dev_node gcp.key=ec_private.pem debug.stderr_topic=/devices/esp_dev_node/events/log debug.stdout_topic=/devices/esp_dev_node/events/log 
+
+
+gcloud projects add-iam-policy-binding smart-ups-187713 --member=serviceAccount:cloud-iot@system.gserviceaccount.com --role=roles/pubsub.publisher
+
+gcloud beta iot registries create iot-registry --region asia-east1 --event-pubsub-topic=iot-topic
+
+
+mos gcp-iot-setup --gcp-project smart-ups-187713 --gcp-region asia-east1 --gcp-registry iot-registry
