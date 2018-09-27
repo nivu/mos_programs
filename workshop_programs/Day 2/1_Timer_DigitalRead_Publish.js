@@ -9,18 +9,15 @@ GPIO.set_mode(D6, GPIO.MODE_INPUT); // Config D6 as Input Pin
 let node = 'n1';
 let pub_topic = 'data/' + node;
 
-Timer.set(5000, true, function() {
+Timer.set(5000, true, function () {
   let value = GPIO.read(D6);
-  print('Button Value D6 : ' ,value);
+  print('Button Value D6 : ', value);
 
-  let ok = MQTT.pub(pub_topic, JSON.stringify(
-              {
-                'status': value,
-                'pin': 'D6',
-                'node': node
-              }), 1);
+  let ok = MQTT.pub(pub_topic, JSON.stringify({
+    'value': value,
+    'pin': 'D6',
+    'node': node
+  }), 1);
 
   print(ok, " published");
 }, null);
-
-

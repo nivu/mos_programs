@@ -13,15 +13,15 @@ let node = 'n1';
 let sub_topic = 'control/' + node;
 
 
-MQTT.sub(sub_topic, function(conn, topic, msg) {
+MQTT.sub(sub_topic, function (conn, topic, msg) {
       print('Topic:', topic, 'message:', msg);
-      
-      if(msg === "1"){
-           GPIO.write(D4, 1);
-           GPIO.write(D0, 1);
-      } else if(msg === "0"){
-           GPIO.write(D4, 0);
-           GPIO.write(D0, 0);
+
+      if (msg === "1") {
+            GPIO.write(D4, 1);
+            GPIO.write(D0, 1);
+      } else if (msg === "0") {
+            GPIO.write(D4, 0);
+            GPIO.write(D0, 0);
       }
 
 }, null);
