@@ -30,7 +30,7 @@ void loop() {
   // Connect or reconnect to WiFi
   if(WiFi.status() != WL_CONNECTED){
     Serial.print("Attempting to connect to SSID: ");
-    Serial.println(SECRET_SSID);
+    //Serial.println(SECRET_SSID);
     while(WiFi.status() != WL_CONNECTED){
       WiFi.begin(ssid, pass);
       Serial.print(".");
@@ -47,6 +47,10 @@ void loop() {
   int x = ThingSpeak.writeField(myChannelNumberForSensor1, tempVal, number, myWriteAPIKey);
   int y = ThingSpeak.writeField(myChannelNumberForSensor2, humVal, number, myWriteAPIKey);
 
+  // Print the Stats Code
+  Serial.println("x " + x);
+  Serial.println("y " + y);
+  
   // Check the return code
   if(x == 200){
     Serial.println("Channel update successful.");
