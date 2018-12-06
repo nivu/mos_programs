@@ -1,40 +1,99 @@
 <html>
-    <head>
+<style type="text/css">
+    .buttonGreen {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+    }
 
-            <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-    </head>
+    /* Green */
+    .buttonRed {
+        background-color: #f44336;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+    }
+
+    /* Red */
+    #div {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
 <body>
 
-<button onclick="switc(16,1)">R1 On</button>
-<button onclick="switc(16,0)">R1 OFF</button> <br> <br>
+    Onboard LED&nbsp
+    <button class="buttonGreen" onclick="switc(2,1)">On</button>
+    <button class="buttonRed" onclick="switc(2,0)">OFF</button> <br><br>
 
-<button onclick="switc(5,1)">R2 On</button>
-<button onclick="switc(5,0)">R2 OFF</button> <br><br>
+    Fan 1&nbsp&nbsp&nbsp&nbsp
+    <button class="buttonGreen" onclick="switc(4,1)">On</button>
+    <button class="buttonRed" onclick="switc(4,0)">OFF</button> <br> <br>
 
-<button onclick="switc(4,1)">R3 On</button>
-<button onclick="switc(4,0)">R3 OFF</button> <br><br>
+    Fan 2&nbsp&nbsp&nbsp&nbsp
+    <button class="buttonGreen" onclick="switc(16,1)">On</button>
+    <button class="buttonRed" onclick="switc(16,0)">OFF</button> <br><br>
 
-<button onclick="switc(12,1)">R4 On</button>
-<button onclick="switc(12,0)">R4 OFF</button> <br><br>
+    Fan 3&nbsp&nbsp&nbsp&nbsp
+    <button class="buttonGreen" onclick="switc(5,1)">On</button>
+    <button class="buttonRed" onclick="switc(5,0)">OFF</button> <br><br>
 
-<button onclick="switc(13,1)">R5 On</button>
-<button onclick="switc(13,0)">R5 OFF</button> <br><br>
+    Light 1&nbsp
+    <button class="buttonGreen" onclick="switc(15,1)">On</button>
+    <button class="buttonRed" onclick="switc(15,0)">OFF</button> <br><br>
 
-<button onclick="switc(15,1)">R6 On</button>
-<button onclick="switc(15,0)">R6 OFF</button> <br><br>
+    Light 2&nbsp
+    <button class="buttonGreen" onclick="switc(12,1)">On</button>
+    <button class="buttonRed" onclick="switc(12,0)">OFF</button> <br><br>
 
-<script>
-function switc(pin,val){
-$.post("http://192.168.1.4/rpc/control?pin=2&val=1",JSON.stringify({"pin":pin, "val": val}),
-    function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
-    });
-}
+    Light 3&nbsp
+    <button class="buttonGreen" onclick="switc(13,1)">On</button>
+    <button class="buttonRed" onclick="switc(13,0)">OFF</button> <br><br>
 
-</script>
+    All Applicances
+    <button class="buttonGreen" onclick="allOnOff(1)">On</button>
+    <button class="buttonRed" onclick="allOnOff(0)">OFF</button> <br><br>
+
+    <script>
+        function allOnOff(arg) {
+            var i;
+            var pins = [4, 16, 5, 15, 12, 13];
+
+            pins.forEach(function (element) {
+                var delayTime = 200;
+                setTimeout(function () {
+                    switc(element, arg);
+                }, delayTime);
+                delayTime += 200;
+            });
+        }
+
+        function switc(pin, val) {
+
+            var http = new XMLHttpRequest();
+            var url = "http://192.168.1.4/rpc/control";
+            var params = JSON.stringify({
+                "pin": pin,
+                "val": val
+            });
+
+            http.open("POST", url, true);
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            http.send(params);
+        }
+    </script>
 
 </body>
+
 </html>

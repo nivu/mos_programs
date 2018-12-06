@@ -1,6 +1,6 @@
 load('api_adc.js');
 load('api_mqtt.js');
-load("api_timer.js");
+load('api_timer.js');
 
 // MQTT Configuration
 let node = 'n1';
