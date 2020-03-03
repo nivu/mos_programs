@@ -7,7 +7,7 @@ GPIO.set_mode(D6, GPIO.MODE_INPUT); // Config D6 as Input Pin
 
 // MQTT Configuration
 let node = 'n1';
-let pub_topic = 'data/' + node;
+let pub_topic = 'kt-data/' + node;
 
 Timer.set(5000, true, function () {
   let value = GPIO.read(D6);

@@ -9,7 +9,7 @@ GPIO.set_mode(D0, GPIO.MODE_OUTPUT);
 
 // MQTT Configuration
 let node = 'n1';
-let sub_topic = 'control/' + node;
+let sub_topic = 'kt-control/' + node;
 
 MQTT.sub(sub_topic, function (conn, topic, msg) {
       print('Topic:', topic, 'msg:', msg, " con", conn);

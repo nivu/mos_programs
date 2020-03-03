@@ -4,7 +4,7 @@ load('api_timer.js');
 
 // MQTT Configuration
 let node = 'n1';
-let pub_topic = 'data/' + node;
+let pub_topic = 'kt-data/' + node;
 
 Timer.set(5000, true, function () {
   let value = ADC.read(0);
